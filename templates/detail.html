@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Животное: {% endblock %}
+
+{% block content %}
+<ul>
+    <div style="text-align: center">
+    {% if data.id == 1 %}
+         <img src="{% static 'images/cat.jpg' %}" style="width:300px">
+    {% elif data.id == 2 %}
+         <img src="{% static 'images/dog.jpg' %}" style="width:300px">
+    {% else %}
+         <img src="{% static 'images/y.jpg' %}" style="width:300px">
+    {% endif %}
+</div>
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th> Название</th>
+            <th> Систематика </th>
+            <th> Продолжительность жизни </th>
+            <th> Одомашнивание </th>
+        </tr>
+        <tr>
+            {% for animal in data.animal_info %}
+              {% if animal.id == data.id %}
+                <td>{{ animal.title }}</td>
+                <td>{{ animal.systematics }}</td>
+                <td> {{ animal.lifetime }}</td>
+                <td>{{ animal.domestication }}</td>
+              {% endif %}
+           {% endfor %}
+        </tr>
+    </table>
+    <div style="text-align: center">
+        <li><a href="{% url 'home_url' %}">{{ 'Home' }}</a> </li>
+    </div>
+</ul>
+{% endblock %}
