@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Данные{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Данные:</h1>
+    </div>
+<ul>
+    {% for pc in data.pc %}
+        <li>Год изобретения языка программирования: {{ lang.year }}</li>
+        <li>Средство разработки: <i>{{ lang.lang }}</i></li>
+        <li>Язык программирования:  <i>{{ lang.env_id.name }}</i></li>
+        <br>
+    {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
+</ul>
+{% endblock %}
